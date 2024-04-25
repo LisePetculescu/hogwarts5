@@ -40,6 +40,38 @@ public class Student {
     this.id = id;
   }
 
+  public String getFullName() {
+    return firstName + " " + (middleName != null ? middleName + " " : "") + lastName;
+  }
+
+  public void setFullName(String fullName) {
+    if( fullName == null || fullName.isBlank() || fullName.isEmpty() ) {
+      System.out.println("Invalid name");
+      return;
+    }
+    String[] names = fullName.split(" ");
+    if (names.length == 0 || names[0].isBlank() || names[names.length - 1].isBlank()) {
+      System.out.println("Invalid name");
+      return;
+    }
+    firstName = names[0];
+    if (names.length == 3) {
+      middleName = names[1];
+      lastName = names[2];
+    } else if (names.length == 2) {
+      lastName = names[1];
+    } else if (names.length >= 4) {
+        middleName = names[1];
+        for (int i = 2; i < names.length - 1; i++) {
+            middleName += " " + names[i];
+        }
+        lastName = names[names.length - 1];
+    } else {
+      middleName = null;
+      lastName = null;
+    }
+  }
+
   public String getFirstName() {
     return firstName;
   }

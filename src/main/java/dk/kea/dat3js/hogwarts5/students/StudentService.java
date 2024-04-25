@@ -74,11 +74,13 @@ public class StudentService {
   private StudentResponseDTO toDTO(Student studentEntity) {
     StudentResponseDTO dto = new StudentResponseDTO(
         studentEntity.getId(),
+            studentEntity.getFullName(),
         studentEntity.getFirstName(),
         studentEntity.getMiddleName(),
         studentEntity.getLastName(),
         studentEntity.getHouse().getName(),
         studentEntity.getSchoolYear()
+
     );
 
     return dto;
@@ -92,6 +94,10 @@ public class StudentService {
         houseService.findById(studentDTO.house()).orElseThrow(),
         studentDTO.schoolYear()
     );
+
+    if(studentDTO.fullName() != null) {
+      entity.setFullName(studentDTO.fullName());
+    }
 
     return entity;
   }
