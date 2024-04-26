@@ -1,5 +1,6 @@
 package dk.kea.dat3js.hogwarts5.students;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,8 +30,8 @@ public class StudentController {
 
   // create post, put, patch, delete methods
   @PostMapping
-  public StudentResponseDTO createStudent(@RequestBody StudentRequestDTO student) {
-    return studentService.save(student);
+  public ResponseEntity<StudentResponseDTO>  createStudent(@RequestBody StudentRequestDTO student) {
+    return  ResponseEntity.status(HttpStatus.CREATED).body(studentService.save(student)) ;
   }
 
   @PutMapping("/{id}")
@@ -42,6 +43,12 @@ public class StudentController {
   public ResponseEntity<StudentResponseDTO> partialUpdateStudent(@PathVariable int id, @RequestBody StudentRequestDTO student) {
     return ResponseEntity.of(studentService.partialUpdate(id, student));
   }
+
+  // students skal ligeledes have en PATCH request for at tilføje/fjerne prefect udnævnelsen - men bruge samme regler som /prefects
+    @PatchMapping("/{id}/prefect")
+    public ResponseEntity<StudentResponseDTO> updatePrefect(@PathVariable int id) {
+        return ResponseEntity.of(studentService.updatePrefect(id));
+    }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<StudentResponseDTO> deleteStudent(@PathVariable int id) {

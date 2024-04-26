@@ -74,12 +74,14 @@ public class StudentService {
   private StudentResponseDTO toDTO(Student studentEntity) {
     StudentResponseDTO dto = new StudentResponseDTO(
         studentEntity.getId(),
-            studentEntity.getFullName(),
         studentEntity.getFirstName(),
         studentEntity.getMiddleName(),
         studentEntity.getLastName(),
+            studentEntity.getFullName(),
         studentEntity.getHouse().getName(),
-        studentEntity.getSchoolYear()
+        studentEntity.getSchoolYear(),
+        studentEntity.getIsPrefect(),
+        studentEntity.getGender()
 
     );
 
@@ -92,7 +94,9 @@ public class StudentService {
         studentDTO.middleName(),
         studentDTO.lastName(),
         houseService.findById(studentDTO.house()).orElseThrow(),
-        studentDTO.schoolYear()
+        studentDTO.schoolYear(),
+        studentDTO.isPrefect(),
+        studentDTO.gender()
     );
 
     if(studentDTO.fullName() != null) {
@@ -101,4 +105,26 @@ public class StudentService {
 
     return entity;
   }
+
+    public Optional<StudentResponseDTO> updatePrefect(int id) {
+      Optional<Student> student = studentRepository.findById(id);
+      if (student.isPresent()) {
+        Student studentToUpdate = student.get();
+        List<Student> existingPrefects = studentRepository.findAllByIsPrefectTrueAndHouseName(studentToUpdate.getHouse().getName());
+        if (!studentToUpdate.getIsPrefect() && existingPrefects.size() == 2 ) {
+          return Optional.empty();
+        } else if (!studentToUpdate.getIsPrefect() && existingPrefects.size() == 1) {
+          if (existingPrefects.getFirst().getGender().equals(studentToUpdate.getGender())) {
+            return Optional.empty();
+          }
+        } else if (studentToUpdate.getSchoolYear() < 5) {
+          return Optional.empty();
+        }
+        studentToUpdate.setIsPrefect(!studentToUpdate.getIsPrefect());
+        return Optional.of(toDTO(studentRepository.save(studentToUpdate)));
+      } else {
+        return Optional.empty();
+      }
+    }
+
 }
