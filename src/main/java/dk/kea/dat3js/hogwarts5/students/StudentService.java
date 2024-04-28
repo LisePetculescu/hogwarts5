@@ -110,7 +110,7 @@ public class StudentService {
       Optional<Student> student = studentRepository.findById(id);
       if (student.isPresent()) {
         Student studentToUpdate = student.get();
-        List<Student> existingPrefects = studentRepository.findAllByIsPrefectTrueAndHouseName(studentToUpdate.getHouse().getName());
+        List<Student> existingPrefects = studentRepository.findAllByPrefectTrueAndHouseName(studentToUpdate.getHouse().getName());
         if (!studentToUpdate.isPrefect() && existingPrefects.size() == 2 ) {
           return Optional.empty();
         } else if (!studentToUpdate.isPrefect() && existingPrefects.size() == 1) {

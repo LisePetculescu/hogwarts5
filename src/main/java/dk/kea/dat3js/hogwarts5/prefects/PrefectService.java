@@ -19,7 +19,7 @@ public class PrefectService {
 
 
     public List<Student> getAllPrefects() {
-        return studentRepository.findAllByIsPrefectTrue();
+        return studentRepository.findAllByPrefectTrue();
     }
 
     public Optional<Student> getPrefectById(int id) {
@@ -41,7 +41,7 @@ public class PrefectService {
     }
 
     public List<Student> getAllPrefectsInHouse(String house) {
-        return studentRepository.findAllByIsPrefectTrueAndHouseName(house);
+        return studentRepository.findAllByPrefectTrueAndHouseName(house);
     }
 
     public void removePrefect(int id) {
