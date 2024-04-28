@@ -47,8 +47,8 @@ public class InitData implements CommandLineRunner {
     Student neville = new Student("Neville", "Frank", "Longbottom", gryffindor, 5, false, "male");
     Student ginny = new Student("Ginny", "Molly", "Weasley", gryffindor, 5, true, "female");
     Student fred = new Student("Fred", "Gideon", "Weasley", gryffindor, 5, false, "male");
-    Student george = new Student("George", "Fabian", "Weasley", gryffindor, 5, false, "male");
-    Student percy = new Student("Percy", "Ignatius", "Weasley", gryffindor, 5, true, "male");
+    Student george = new Student("George", "Fabian", "Weasley", gryffindor, 5, true, "male");
+    Student percy = new Student("Percy", "Ignatius", "Weasley", gryffindor, 5, false, "male");
 
     Student draco = new Student("Draco", "", "Malfoy", slytherin, 5, false, "male");
     Student cedric = new Student("Cedric", "", "Diggory", hufflepuff, 6, true, "male");

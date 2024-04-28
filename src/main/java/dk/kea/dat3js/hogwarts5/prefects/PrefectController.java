@@ -39,7 +39,7 @@ public class PrefectController {
         if (student == null) {
             return ResponseEntity.notFound().build();
         }
-       return ResponseEntity.status(HttpStatus.CREATED).body(prefectService.addPrefect(id));
+       return ResponseEntity.status(HttpStatus.CREATED).body(student);
 
     }
 
