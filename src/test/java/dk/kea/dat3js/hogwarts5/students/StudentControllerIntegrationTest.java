@@ -38,13 +38,13 @@ public class StudentControllerIntegrationTest {
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
                 .expectBody().json("""
     {
-                            
                             "firstName": "Buster",
                             "middleName": "Man",
                             "lastName": "Mikkel",
                             "fullName": "Buster Man Mikkel",
                             "house": "Gryffindor",
-                            "schoolYear": 7}
+                            "schoolYear": 7
+                        }
     
     """)
                 .jsonPath("$.id").exists();

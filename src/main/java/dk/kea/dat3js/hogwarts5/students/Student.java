@@ -3,6 +3,7 @@ package dk.kea.dat3js.hogwarts5.students;
 import dk.kea.dat3js.hogwarts5.house.House;
 import dk.kea.dat3js.hogwarts5.shared.PersonWithNames;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @Entity
 public class Student implements PersonWithNames {
   @Id
@@ -21,23 +23,23 @@ public class Student implements PersonWithNames {
   @ManyToOne
   private House house;
   private Integer schoolYear; // 1-7
-  private Boolean isPrefect;
+  private boolean prefect;
   private String gender;
 
   public Student() {
   }
 
-  public Student(String firstName, String lastName, House house, int schoolYear, boolean isPrefect, String gender) {
-    this(firstName, null, lastName, house, schoolYear, isPrefect, gender);
+  public Student(String firstName, String lastName, House house, int schoolYear, boolean prefect, String gender) {
+    this(firstName, null, lastName, house, schoolYear, prefect, gender);
   }
 
-  public Student(String firstName, String middleName, String lastName, House house, int schoolYear, boolean isPrefect, String gender) {
+  public Student(String firstName, String middleName, String lastName, House house, int schoolYear, boolean prefect, String gender) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
     this.house = house;
     this.schoolYear = schoolYear;
-    this.isPrefect = isPrefect;
+    this.prefect = prefect;
     this.gender = gender;
   }
 

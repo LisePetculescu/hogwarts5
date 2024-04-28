@@ -80,7 +80,7 @@ public class StudentService {
             studentEntity.getFullName(),
         studentEntity.getHouse().getName(),
         studentEntity.getSchoolYear(),
-        studentEntity.getIsPrefect(),
+        studentEntity.isPrefect(),
         studentEntity.getGender()
 
     );
@@ -111,16 +111,16 @@ public class StudentService {
       if (student.isPresent()) {
         Student studentToUpdate = student.get();
         List<Student> existingPrefects = studentRepository.findAllByIsPrefectTrueAndHouseName(studentToUpdate.getHouse().getName());
-        if (!studentToUpdate.getIsPrefect() && existingPrefects.size() == 2 ) {
+        if (!studentToUpdate.isPrefect() && existingPrefects.size() == 2 ) {
           return Optional.empty();
-        } else if (!studentToUpdate.getIsPrefect() && existingPrefects.size() == 1) {
+        } else if (!studentToUpdate.isPrefect() && existingPrefects.size() == 1) {
           if (existingPrefects.getFirst().getGender().equals(studentToUpdate.getGender())) {
             return Optional.empty();
           }
         } else if (studentToUpdate.getSchoolYear() < 5) {
           return Optional.empty();
         }
-        studentToUpdate.setIsPrefect(!studentToUpdate.getIsPrefect());
+        studentToUpdate.setPrefect(!studentToUpdate.isPrefect());
         return Optional.of(toDTO(studentRepository.save(studentToUpdate)));
       } else {
         return Optional.empty();

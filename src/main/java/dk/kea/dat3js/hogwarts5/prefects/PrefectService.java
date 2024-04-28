@@ -25,7 +25,7 @@ public class PrefectService {
     public Optional<Student> getPrefectById(int id) {
 
         Optional<Student> optionalPrefect = studentRepository.findById(id);
-        if (optionalPrefect.isPresent() && optionalPrefect.get().getIsPrefect()) {
+        if (optionalPrefect.isPresent() && optionalPrefect.get().isPrefect()) {
             return optionalPrefect;
         } else {
             return Optional.empty();
@@ -35,7 +35,7 @@ public class PrefectService {
     public void addPrefect(int id) {
         Optional<Student> student = studentRepository.findById(id);
         student.ifPresent(s -> {
-            s.setIsPrefect(true);
+            s.setPrefect(true);
             studentRepository.save(s);
         });
     }
@@ -47,7 +47,7 @@ public class PrefectService {
     public void removePrefect(int id) {
         Optional<Student> student = studentRepository.findById(id);
         student.ifPresent(s -> {
-            s.setIsPrefect(false);
+            s.setPrefect(false);
             studentRepository.save(s);
         });
     }

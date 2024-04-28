@@ -141,15 +141,15 @@ class StudentTest {
 //
 //
 //        // act
-//        student1.setIsPrefect(true);
-//        student2.setIsPrefect(true);
-//        student3.setIsPrefect(true);
+//        student1.setPrefect(true);
+//        student2.setPrefect(true);
+//        student3.setPrefect(true);
 //
 //
 //        // assert
-//        assertTrue(student1.getIsPrefect());
-//        assertTrue(student2.getIsPrefect());
-//        assertFalse(student3.getIsPrefect());
+//        assertTrue(student1.getPrefect());
+//        assertTrue(student2.getPrefect());
+//        assertFalse(student3.getPrefect());
 //
 //
 //    }
