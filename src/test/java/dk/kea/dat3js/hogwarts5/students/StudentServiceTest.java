@@ -43,7 +43,7 @@ class StudentServiceTest {
             return students.stream().filter(s -> s.getId() == id).findFirst();
         });
 
-        when(studentRepository.findAllByIsPrefectTrueAndHouseName(any())).thenAnswer(i -> {
+        when(studentRepository.findAllByPrefectTrueAndHouseName(any())).thenAnswer(i -> {
             String houseName = i.getArgument(0);
             return students.stream().filter(s -> s.getHouse().getName().equals(houseName) && s.isPrefect()).toList();
 

@@ -2,6 +2,7 @@ package dk.kea.dat3js.hogwarts5.prefects;
 
 
 import dk.kea.dat3js.hogwarts5.students.Student;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +34,13 @@ public class PrefectController {
     }
 
     @PostMapping("/{id}")
-    public void addPrefect(@PathVariable int id) {
-        prefectService.addPrefect(id);
+    public ResponseEntity<Student> addPrefect(@PathVariable int id) {
+        Student student = prefectService.addPrefect(id);
+        if (student == null) {
+            return ResponseEntity.notFound().build();
+        }
+       return ResponseEntity.status(HttpStatus.CREATED).body(prefectService.addPrefect(id));
+
     }
 
     @DeleteMapping("/{id}")

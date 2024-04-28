@@ -32,12 +32,18 @@ public class PrefectService {
         }
     }
 
-    public void addPrefect(int id) {
+    public Student addPrefect(int id) {
         Optional<Student> student = studentRepository.findById(id);
-        student.ifPresent(s -> {
-            s.setPrefect(true);
-            studentRepository.save(s);
-        });
+        if (student.isPresent()) {
+            Student getStudent = student.get();
+            if (getStudent.isPrefect()) {
+                return null;
+            }
+            getStudent.setPrefect(true);
+            return studentRepository.save(getStudent);
+        }
+
+        return null;
     }
 
     public List<Student> getAllPrefectsInHouse(String house) {
