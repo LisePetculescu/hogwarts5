@@ -2,8 +2,8 @@
 How to run the tests in this program:
 
 Disclaimer:
-* If you want to run the tests in the terminal you have to be in the file foldr of this program.
-* If you're using powershell your JAVA_HOME variable needs to be set up.
+* If you want to run the tests in the terminal you have to be in the file folder of this program.
+* If you're using powershell on windows your JAVA_HOME variable needs to be set up in system environment variables.
 * You can also use a Git Bash terminal. 
 
 
@@ -28,7 +28,7 @@ Disclaimer:
 2. Open the test file you want to run
 3. Right click on the test class name
 4. Click on `Run 'TestClassName'`
-5. The tests will run and you will see the results in the terminal
+5. The tests will run and you will see the results in the "Run" tab
 ```
 
 * Run one test in intelliJ IDEA
@@ -37,7 +37,7 @@ Disclaimer:
 2. Open the test file you want to run
 3. Right click on the test method name
 4. Click on `Run 'testMethodName()'`
-5. The tests will run and you will see the results in the terminal
+5. The tests will run and you will see the results in the "Run" tab
 ```
 
   
