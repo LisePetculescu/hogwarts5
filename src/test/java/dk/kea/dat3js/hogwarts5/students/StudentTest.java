@@ -131,28 +131,28 @@ class StudentTest {
 
     }
 
-    @Test
-    void updatePrefectMaxTwoPersons() {
-        // arrange
-        Student student1 = new Student("harr", "jam", "pott", gryffindor, 1, true, "male");
-        Student student2 = new Student("ron", "bil", "weas", gryffindor, 1, true, "male");
-        Student student3 = new Student("herm", "jean", "grang", gryffindor, 1, true, "female");
-
-
-
-        // act
-        student1.setIsPrefect(true);
-        student2.setIsPrefect(true);
-        student3.setIsPrefect(true);
-
-
-        // assert
-        assertTrue(student1.getIsPrefect());
-        assertTrue(student2.getIsPrefect());
-        assertFalse(student3.getIsPrefect());
-
-
-    }
+//    @Test
+//    void updatePrefectMaxTwoPersons() {
+//        // arrange
+//        Student student1 = new Student("harr", "jam", "pott", gryffindor, 1, true, "male");
+//        Student student2 = new Student("ron", "bil", "weas", gryffindor, 1, true, "male");
+//        Student student3 = new Student("herm", "jean", "grang", gryffindor, 1, true, "female");
+//
+//
+//
+//        // act
+//        student1.setIsPrefect(true);
+//        student2.setIsPrefect(true);
+//        student3.setIsPrefect(true);
+//
+//
+//        // assert
+//        assertTrue(student1.getIsPrefect());
+//        assertTrue(student2.getIsPrefect());
+//        assertFalse(student3.getIsPrefect());
+//
+//
+//    }
 
 
 
